@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="./dist/index.js" type="module"></script>
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./node_modules/sweetalert2/dist/sweetalert2.min.css"
+    />
+    <title>Divisione Conti</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Divisione Conti</span>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl">
+          <h2>Vacanze</h2>
+          <div id="div-vacanze">
+            <ul id="lista-vacanze" class="list-group"></ul>
+          </div>
+        </div>
+        <div class="col-xl">
+          <h3>Aggiungi una vacanza</h3>
+          <form id="formVacanza">
+            <div class="input-group mb-3">
+              <span
+                class="input-group-text"
+                id="nomeVacanza-sizing-default"
+                for="nomeVacanza"
+                >Nome vacanza</span
+              >
+              <input
+                name="nomeVacanza"
+                id="nomeVacanza"
+                type="text"
+                class="form-control"
+                aria-describedby="nomeVacanza-sizing-default"
+                autofocus
+              />
+              <button
+                class="btn btn-outline-secondary"
+                type="submit"
+                id="button-addon2"
+              >
+                Aggiungi
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl">
+          <h2 is-title="true" class="vacanza-detail"></h2>
+          <div id="lista-persone" class="vacanza-detail"></div>
+        </div>
+        <div class="col">
+          <h2 is-title="true" class="vacanza-detail"></h2>
+          <ul id="lista-pagamenti" class="vacanza-detail"></ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

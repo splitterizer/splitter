@@ -1,0 +1,28 @@
+{
+  "name": "distributore_denaro",
+  "version": "1.0.0",
+  "description": "Distributore di denaro per persone tra viaggi",
+  "main": "index.js",
+  "author": "Riccardo Belingheri",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.14.5",
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/jest": "^26.0.24",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.0.4",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  },
+  "scripts": {
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "@types/sweetalert": "^2.0.4",
+    "bootstrap": "^5.1.0",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.1.2"
+  }
+}
