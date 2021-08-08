@@ -1,5 +1,5 @@
-import Persona from "./Persona.js";
-import Transazione from "./Transazione.js";
+import Persona from "./Persona";
+import Transazione from "./Transazione";
 
 export default interface Conto {
   persona: Persona;

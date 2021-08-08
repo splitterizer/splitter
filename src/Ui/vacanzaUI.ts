@@ -1,18 +1,18 @@
-import Swal from "../../node_modules/sweetalert2/src/sweetalert2.js";
+import Swal from "sweetalert2";
 
-import Vacanza from "../Vacanza.js";
-import * as ArrayUtility from "../utility/arrayUtility.js";
-import * as vacanzaService from "../service/vacanzeService.js";
+import Vacanza from "../Vacanza";
+import * as ArrayUtility from "../utility/arrayUtility";
+import * as vacanzaService from "../service/vacanzeService";
 
-import * as PersoneUi from "./personeUI.js";
-import * as PagamentiUi from "./pagamentiUI.js";
-import DivisioneConto from "../DivisioneConto.js";
+import * as PersoneUi from "./personeUI";
+import * as PagamentiUi from "./pagamentiUI";
+import DivisioneConto from "../DivisioneConto";
 
 let vacanze: Array<Vacanza> = vacanzaService.getAll();
 export function init() {
   renderListaVacanze();
 
-  const formVacanza = document.getElementById("formVacanza");
+  const formVacanza = document.getElementById("formVacanza")!;
 
   formVacanza.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -44,7 +44,7 @@ export function init() {
 
 export function renderListaVacanze(inVacanze?: Array<Vacanza>) {
   if (inVacanze) vacanze = [...inVacanze];
-  const ol = document.getElementById("lista-vacanze");
+  const ol = document.getElementById("lista-vacanze")!;
   ol.innerHTML = "";
 
   document
@@ -79,7 +79,6 @@ export function renderListaVacanze(inVacanze?: Array<Vacanza>) {
       li.setAttribute("aria-current", "true");
       PersoneUi.renderListaPersone(vacanza);
       PagamentiUi.renderListaPagamenti(vacanza);
-      new DivisioneConto(vacanza);
     });
 
     badge.addEventListener("click", async (e) => {

@@ -1,4 +1,4 @@
-import Vacanza, { VacanzaProperties } from "../Vacanza.js";
+import Vacanza, { VacanzaProperties } from "../Vacanza";
 
 const nomeStorage: string = "vacanze";
 

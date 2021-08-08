@@ -1,11 +1,11 @@
-import Swal from "../../node_modules/sweetalert2/src/sweetalert2.js";
+import Swal from "sweetalert2";
 
-import Vacanza from "../Vacanza.js";
-import * as vacanzaService from "../service/vacanzeService.js";
-import Pagamento from "./../interfaccie/Pagamento.js";
+import Vacanza from "../Vacanza";
+import * as vacanzaService from "../service/vacanzeService";
+import Pagamento from "./../interfaccie/Pagamento";
 
-import * as personeUI from "./personeUI.js";
-import * as arrayUtility from "../utility/arrayUtility.js";
+import * as personeUI from "./personeUI";
+import * as arrayUtility from "../utility/arrayUtility";
 
 const nomeListaPagamenti: string = "lista-pagamenti";
 const nomeDataListPersone: string = "listPersone";
@@ -17,9 +17,9 @@ const itFormatNumber = new Intl.NumberFormat("it-IT", {
 });
 
 export function renderListaPagamenti(vacanza: Vacanza) {
-  const div = document.getElementById(nomeListaPagamenti);
+  const div = document.getElementById(nomeListaPagamenti)!;
   div.innerHTML = "";
-  div.parentElement.querySelector('[is-title="true"]').textContent =
+  div.parentElement!.querySelector('[is-title="true"]')!.textContent =
     "Pagamenti";
   renderForm(vacanza);
   div.appendChild(document.createElement("hr"));
@@ -194,7 +194,7 @@ function renderForm(vacanza: Vacanza): void {
     console.debug(vacanza.getDivisioneSpese());
   });
 
-  document.getElementById(nomeListaPagamenti).append(form);
+  document.getElementById(nomeListaPagamenti)!.append(form);
   renderDatalistpersone(vacanza);
 }
 
@@ -203,12 +203,12 @@ function renderForm(vacanza: Vacanza): void {
  * @param vacanza vacanza in questione
  */
 export function renderDatalistpersone(vacanza: Vacanza) {
-  let dataListPersoneEl = document.getElementById(nomeDataListPersone);
+  let dataListPersoneEl = document.getElementById(nomeDataListPersone)!;
   if (!dataListPersoneEl) {
     dataListPersoneEl = document.createElement("datalist");
     dataListPersoneEl.id = nomeDataListPersone;
     document
-      .getElementById(nomeInputComboboxEditPersone)
+      .getElementById(nomeInputComboboxEditPersone)!
       .appendChild(dataListPersoneEl);
   }
   dataListPersoneEl.innerHTML = "";

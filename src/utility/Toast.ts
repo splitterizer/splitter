@@ -1,4 +1,4 @@
-import Swal from "../../node_modules/sweetalert2/src/sweetalert2.js";
+import Swal from "sweetalert2";
 
 enum levelMessage {
   info = "info",
@@ -37,6 +37,7 @@ export default class StdOut {
         console.error(e);
       });
 
-    console[level](message);
+    if (level === levelMessage.error) console.error(message);
+    else console.log(message);
   }
 }

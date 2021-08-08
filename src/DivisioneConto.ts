@@ -1,10 +1,10 @@
-import Vacanza from "./Vacanza.js";
-import * as arrayUtility from "./utility/arrayUtility.js";
+import Vacanza from "./Vacanza";
+import * as arrayUtility from "./utility/arrayUtility";
 
-import DivisoriConto from "./interfaccie/DivisoriConto.js";
-import Conto from "./interfaccie/Conto.js";
-import Persona from "./interfaccie/Persona.js";
-import Transazione from "./interfaccie/Transazione.js";
+import DivisoriConto from "./interfaccie/DivisoriConto";
+import Conto from "./interfaccie/Conto";
+import Persona from "./interfaccie/Persona";
+import Transazione from "./interfaccie/Transazione";
 
 export default class DivisioneConto {
   private divisoriConto: DivisoriConto = {
@@ -88,10 +88,15 @@ export default class DivisioneConto {
    * getTransazioni della persona
    */
   public getTransazioni(persona: Persona): Array<Transazione> {
-    const { transazioni } = this.divisioniConto.conti.find(
+    if (!this.divisioniConto.conti) return [];
+    const conto = this.divisioniConto.conti.find(
       (c) => c.persona.nome === persona.nome
     );
-    return transazioni;
+    if (conto) {
+      const { transazioni } = conto;
+      return transazioni;
+    }
+    return [];
   }
 
   private getCreditoResiduo(creditore: Conto): number {
