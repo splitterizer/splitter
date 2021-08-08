@@ -4,6 +4,9 @@ module.exports = {
   mode: "development",
   devtool: "eval-source-map",
   entry: "./src/index.ts",
+  devServer: {
+    contentBase: "./public",
+  },
   module: {
     rules: [
       {
