@@ -1,6 +1,6 @@
-import DivisioneConto from "./DivisioneConto.js";
-import Pagamento from "./interfaccie/Pagamento.js";
-import Persona, { ottieniPersona } from "./interfaccie/Persona.js";
+import DivisioneConto from "./DivisioneConto";
+import Pagamento from "./interfaccie/Pagamento";
+import Persona, { ottieniPersona } from "./interfaccie/Persona";
 
 export interface VacanzaProperties {
   _nome: string;

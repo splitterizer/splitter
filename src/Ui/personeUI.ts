@@ -1,10 +1,10 @@
-import Swal from "../../node_modules/sweetalert2/src/sweetalert2.js";
+import Swal from "sweetalert2";
 
-import Persona from "../interfaccie/Persona.js";
-import Vacanza from "../Vacanza.js";
-import * as vacanzaService from "../service/vacanzeService.js";
-import * as pagamentiUi from "./pagamentiUI.js";
-import * as arrayUtility from "../utility/arrayUtility.js";
+import Persona from "../interfaccie/Persona";
+import Vacanza from "../Vacanza";
+import * as vacanzaService from "../service/vacanzeService";
+import * as pagamentiUi from "./pagamentiUI";
+import * as arrayUtility from "../utility/arrayUtility";
 
 const nomeListaPersona: string = "lista-persone";
 const itFormatNumber = new Intl.NumberFormat("it-IT", {
@@ -17,9 +17,10 @@ const itFormatNumber = new Intl.NumberFormat("it-IT", {
  * @param vacanza
  */
 export function renderListaPersone(vacanza: Vacanza) {
-  const div = document.getElementById(nomeListaPersona);
+  const div = document.getElementById(nomeListaPersona)!;
   div.innerHTML = "";
-  div.parentElement.querySelector('[is-title="true"]').textContent = "Persone";
+  div.parentElement!.querySelector('[is-title="true"]')!.textContent =
+    "Persone";
   renderForm(vacanza);
   div.appendChild(document.createElement("hr"));
   for (let persona of vacanza.persone)
@@ -140,5 +141,5 @@ function renderForm(vacanza: Vacanza): void {
     renderListaPersone(vacanza);
   });
 
-  document.getElementById(nomeListaPersona).append(form);
+  document.getElementById(nomeListaPersona)!.append(form);
 }
