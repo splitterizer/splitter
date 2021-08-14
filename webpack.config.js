@@ -3,10 +3,10 @@ const path = require("path");
 const WebpackBundleAnalyzer =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
-let devMode = process.env.devMode || true;
+const isProduction = process.env.NODE_ENV === "production";
 
 module.exports = {
-  mode: devMode ? "development" : "production",
+  mode: isProduction ? "production" : "development",
   devtool: "eval-source-map",
   entry: "./src/index.ts",
   devServer: {
