@@ -45,5 +45,5 @@ module.exports = {
     path: path.resolve(__dirname, "public/compiled"),
   },
   //Add Analyzer Plugin alongside your other plugins...
-  plugins: [new WebpackBundleAnalyzer()],
+  //plugins: [new WebpackBundleAnalyzer()],
 };
