@@ -42,4 +42,4 @@ yarn.lock
 
 node_modules/
 
-public/bundle.js
+public/compiled
