@@ -6,6 +6,11 @@ import Conto from "./interfaccie/Conto";
 import Persona from "./interfaccie/Persona";
 import Transazione from "./interfaccie/Transazione";
 
+/**
+ * Tollerranza di errore nella divisione dei conti
+ */
+const ERRORE_ACCETTATO = 0.2;
+
 export default class DivisioneConto {
   private divisoriConto: DivisoriConto = {
     spesaAPersona: 0,
@@ -41,38 +46,37 @@ export default class DivisioneConto {
       if (conto.giaPagato > this.spesaAPersona) creditori.push(conto);
     }
 
-    // desc
-    creditori.sort((a, b) => b.giaPagato - a.giaPagato);
-    debitori.sort((a, b) => b.giaPagato - a.giaPagato);
-
     while (creditori.length > 0) {
-      creditori.forEach((creditore, idxCreditore) => {
-        debitori.forEach((debitore, idxDebitore) => {
-          const scambio = Math.min(
-            this.getCreditoResiduo(creditore),
-            this.getDebitoResiduo(debitore)
-          );
-          console.debug(
-            `Creditore ${creditore.persona.nome} Debitore ${debitore.persona.nome} per ${scambio}`
-          );
-          const transazioneCredito: Transazione = {
-            personaCoinvolta: debitore.persona.nome,
-            valore: scambio,
-          };
-          creditore.transazioni.push(transazioneCredito);
-          const transazioneDebito: Transazione = {
-            personaCoinvolta: creditore.persona.nome,
-            valore: -scambio,
-          };
-          debitore.transazioni.push(transazioneDebito);
+      // desc
+      creditori.sort((a, b) => b.giaPagato - a.giaPagato);
+      debitori.sort((a, b) => b.giaPagato - a.giaPagato);
 
-          if (this.getCreditoResiduo(creditore) < 0.5)
-            creditori.splice(idxCreditore, 1);
+      const creditore = creditori[0];
+      const debitore = debitori[0];
 
-          if (this.getDebitoResiduo(debitore) < 0.5)
-            debitori.splice(idxDebitore, 1);
-        });
-      });
+      const scambio = Math.min(
+        this.getCreditoResiduo(creditore),
+        this.getDebitoResiduo(debitore)
+      );
+      console.debug(
+        `Creditore ${creditore.persona.nome} Debitore ${debitore.persona.nome} per ${scambio}`
+      );
+      const transazioneCredito: Transazione = {
+        personaCoinvolta: debitore.persona.nome,
+        valore: scambio,
+      };
+      creditore.transazioni.push(transazioneCredito);
+      const transazioneDebito: Transazione = {
+        personaCoinvolta: creditore.persona.nome,
+        valore: -scambio,
+      };
+      debitore.transazioni.push(transazioneDebito);
+
+      if (this.getCreditoResiduo(creditore) < ERRORE_ACCETTATO)
+        creditori.splice(0, 1);
+
+      if (this.getDebitoResiduo(debitore) < ERRORE_ACCETTATO)
+        debitori.splice(0, 1);
     }
   }
 
