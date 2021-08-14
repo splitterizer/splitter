@@ -1,7 +1,12 @@
 const path = require("path");
+//Webpack Analyzer
+const WebpackBundleAnalyzer =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+
+let devMode = process.env.devMode || true;
 
 module.exports = {
-  mode: "development",
+  mode: devMode ? "development" : "production",
   devtool: "eval-source-map",
   entry: "./src/index.ts",
   devServer: {
@@ -23,9 +28,22 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".js"],
   },
-  output: {
-    publicPath: "compiled",
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "public/compiled"),
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/, ///< put all used node_modules modules in this chunk
+          name: "vendor", ///< name of bundle
+          chunks: "all", ///< type of code to put in this bundle
+        },
+      },
+    },
   },
+  output: {
+    filename: "index.js",
+    path: path.resolve("./public/compiled"),
+    chunkFilename: "[name].js", ///< Custom name for Chunks [name] represents the name of the module
+  },
+  //Add Analyzer Plugin alongside your other plugins...
+  plugins: [new WebpackBundleAnalyzer()],
 };
