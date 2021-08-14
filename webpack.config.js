@@ -40,9 +40,9 @@ module.exports = {
     },
   },
   output: {
-    filename: "index.js",
-    path: path.resolve("./public/compiled"),
-    chunkFilename: "[name].js", ///< Custom name for Chunks [name] represents the name of the module
+    publicPath: "public",
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "public/compiled"),
   },
   //Add Analyzer Plugin alongside your other plugins...
   plugins: [new WebpackBundleAnalyzer()],
