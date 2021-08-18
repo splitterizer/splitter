@@ -1,17 +1,7 @@
 const path = require("path");
-//Webpack Analyzer
-const WebpackBundleAnalyzer =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
-
-const isProduction = process.env.NODE_ENV === "production";
 
 module.exports = {
-  mode: isProduction ? "production" : "development",
-  devtool: "eval-source-map",
   entry: "./src/index.ts",
-  devServer: {
-    contentBase: "./public",
-  },
   module: {
     rules: [
       {
@@ -44,6 +34,4 @@ module.exports = {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "public/compiled"),
   },
-  //Add Analyzer Plugin alongside your other plugins...
-  //plugins: [new WebpackBundleAnalyzer()],
 };

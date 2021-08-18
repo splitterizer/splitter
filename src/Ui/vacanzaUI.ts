@@ -6,7 +6,6 @@ import * as vacanzaService from "../service/vacanzeService";
 
 import * as PersoneUi from "./personeUI";
 import * as PagamentiUi from "./pagamentiUI";
-import DivisioneConto from "../DivisioneConto";
 
 let vacanze: Array<Vacanza> = vacanzaService.getAll();
 export function init() {
