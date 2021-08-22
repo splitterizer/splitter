@@ -20,5 +20,9 @@ export function hasPropertyEqualAs(
 
 export function sumArrayProp(array: Array<any>, property: string): number {
   if (array.length === 0) return 0;
-  return array.map((e) => e[property]).reduce((p, c) => p + c);
+  let somma = 0;
+  for (let i of array) {
+    somma += (i && i[property]) || 0;
+  }
+  return somma;
 }

@@ -29,3 +29,36 @@ describe("hasPropertyEqualAs", () => {
     expect(risultato).eql(false);
   });
 });
+
+describe("sumArrayProp", () => {
+  it("Ritorna somma dato array che contiene oggetti che anno tutti la proprieta desiderata", () => {
+    const array = [{ p: 1 }, { p: 1 }, { p: 2 }];
+    const risultato = arrUt.sumArrayProp(array, "p");
+    expect(risultato).eql(4);
+  });
+
+  it("Ritorna 0 dato array vuoto", () => {
+    const risultato = arrUt.sumArrayProp([], "p");
+    expect(risultato).eql(0);
+  });
+
+  it('Ritorna 0 data la proprieta ""', () => {
+    const risultato = arrUt.sumArrayProp([{ p: 1 }], "");
+    expect(risultato).eql(0);
+  });
+
+  it("Ritorna 0 dato array che contiene oggetti senza la proprieta' in input", () => {
+    const array = [{ p: 1 }, { p: 1 }, { p: 2 }];
+    const risultato = arrUt.sumArrayProp(array, "n");
+    expect(risultato).eql(0);
+  });
+
+  it("Ritorna somma dato array che contiene oggetti i quali alcuni hanno la proprieta desiderata ed altri no", () => {
+    const array = [{ p: 1 }, { n: 1 }, { p: 2 }, {}];
+    let risultato = arrUt.sumArrayProp(array, "p");
+    expect(risultato).eql(3);
+
+    risultato = arrUt.sumArrayProp(array, "n");
+    expect(risultato).eql(1);
+  });
+});
