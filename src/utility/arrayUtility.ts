@@ -1,5 +1,6 @@
 /**
- *
+ * Confronta se nell array in input esiste la proprieta
+ * passata in input con il valore in input
  * @param array
  * @param propertyName
  * @param value
@@ -8,11 +9,11 @@
 export function hasPropertyEqualAs(
   array: Array<any>,
   propertyName: string,
-  value: string
+  value: string | number
 ): boolean {
   for (let obj of array) {
     if (!obj) return false;
-    if (obj[propertyName] === value) return true;
+    if (obj[propertyName] == value) return true;
   }
   return false;
 }
