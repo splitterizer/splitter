@@ -49,7 +49,7 @@ export default class Vacanza {
         `${personaDaAggiungere.nome} gia' presente nella vacanza`
       );
 
-    this.attr._persone.push(personaDaAggiungere);
+    this.attr._persone.push({ ...personaDaAggiungere });
   };
 
   /**
