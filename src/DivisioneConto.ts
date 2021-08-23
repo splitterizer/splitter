@@ -91,10 +91,15 @@ export default class DivisioneConto {
   /**
    * getTransazioni della persona
    */
-  public getTransazioni(persona: Persona): Array<Transazione> {
+  public getTransazioni(persona: Persona | string): Array<Transazione> {
+    let nomePersonaDaCercare = "";
+
+    if (typeof persona === "string") nomePersonaDaCercare = persona;
+    else nomePersonaDaCercare = persona.nome;
+
     if (!this.divisioniConto.conti) return [];
     const conto = this.divisioniConto.conti.find(
-      (c) => c.persona.nome === persona.nome
+      (c) => c.persona.nome === nomePersonaDaCercare
     );
     if (conto) {
       const { transazioni } = conto;
