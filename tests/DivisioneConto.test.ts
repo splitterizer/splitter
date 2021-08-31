@@ -27,4 +27,13 @@ describe("divisioneConto", () => {
       Array
     ).to.be.empty;
   });
+
+  it("Deve ritornare 0 euro come spesa a persona se non esistono transazioni", () => {
+    const v = new Vacanza("Nome Vacanza");
+    const persona: Persona = { nome: "Perosna1" };
+    v.addPersona(persona);
+    v.addPersona("Persona2");
+    const divisioneConto = new DivisioneConto(v);
+    expect(divisioneConto.spesaAPersona).to.be.eql(0);
+  });
 });
