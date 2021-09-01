@@ -10,7 +10,7 @@ export default class DivisioneConto {
   /**
    * Tollerranza di errore nella divisione dei conti
    */
-  public static ERRORE_ACCETTATO = 0.2;
+  public static ERRORE_ACCETTATO: number = 0.2;
   private divisoriConto: DivisoriConto = {
     spesaAPersona: 0,
     conti: [],
@@ -71,10 +71,10 @@ export default class DivisioneConto {
       };
       debitore.transazioni.push(transazioneDebito);
 
-      if (this.getCreditoResiduo(creditore) < ERRORE_ACCETTATO)
+      if (this.getCreditoResiduo(creditore) < DivisioneConto.ERRORE_ACCETTATO)
         creditori.splice(0, 1);
 
-      if (this.getDebitoResiduo(debitore) < ERRORE_ACCETTATO)
+      if (this.getDebitoResiduo(debitore) < DivisioneConto.ERRORE_ACCETTATO)
         debitori.splice(0, 1);
     }
   }
