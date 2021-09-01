@@ -6,12 +6,11 @@ import Conto from "./interfaccie/Conto";
 import Persona from "./interfaccie/Persona";
 import Transazione from "./interfaccie/Transazione";
 
-/**
- * Tollerranza di errore nella divisione dei conti
- */
-const ERRORE_ACCETTATO = 0.2;
-
 export default class DivisioneConto {
+  /**
+   * Tollerranza di errore nella divisione dei conti
+   */
+  public static ERRORE_ACCETTATO = 0.2;
   private divisoriConto: DivisoriConto = {
     spesaAPersona: 0,
     conti: [],
