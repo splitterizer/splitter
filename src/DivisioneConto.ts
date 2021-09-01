@@ -57,9 +57,7 @@ export default class DivisioneConto {
         this.getCreditoResiduo(creditore),
         this.getDebitoResiduo(debitore)
       );
-      console.debug(
-        `Creditore ${creditore.persona.nome} Debitore ${debitore.persona.nome} per ${scambio}`
-      );
+
       const transazioneCredito: Transazione = {
         personaCoinvolta: debitore.persona.nome,
         valore: scambio,
