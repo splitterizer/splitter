@@ -1,5 +1,7 @@
 ![Build](https://github.com/Belingheri/splitter/actions/workflows/webpack.yml/badge.svg)
 ![Test](https://github.com/Belingheri/splitter/actions/workflows/test.yml/badge.svg)
+![dockerhub](https://github.com/Belingheri/splitter/actions/workflows/dockerhub.yml/badge.svg)
+![security](https://github.com/Belingheri/splitter/actions/workflows/codeql-analysis.yml/badge.svg)
 
 # splitter
 
