@@ -1,0 +1,12 @@
+FROM node:17.3.0-alpine3.15 as build-stage
+WORKDIR /app
+ENV NODE_OPTIONS=--openssl-legacy-provider
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+FROM nginx:1.12-alpine
+COPY --from=build-stage /app/public /usr/share/nginx/html
+EXPOSE 80
+ENTRYPOINT [ "nginx","-g","daemon off;" ]
