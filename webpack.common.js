@@ -1,7 +1,10 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./src/index.ts",
+  entry: {
+    main: "./src/index.ts",
+    darkLightMode: "./src/darkLightMode.ts",
+  },
   module: {
     rules: [
       {
