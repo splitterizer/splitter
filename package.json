@@ -1,6 +1,6 @@
 {
   "name": "Distributore-denaro",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Applicazione per la divisione dei conti di un evento tra amici.\r Demo [qui](https://belingheri.altervista.org/Decisione/)",
   "main": "index.js",
   "scripts": {
