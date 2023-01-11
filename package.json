@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.1.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "sweetalert2": "^11.1.2"
   }
 }
